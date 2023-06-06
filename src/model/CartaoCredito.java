@@ -13,7 +13,7 @@ public class CartaoCredito extends ContaCorrente{
         super(numConta);
         this.limiteCredito = 0;
         this.saldoDisponivel = 0;
-        this.fatura = 0;
+        setFatura(0);
         this.dataVencimento = "0";
     }
 
@@ -47,9 +47,9 @@ public class CartaoCredito extends ContaCorrente{
     }
 
     public void compraCredito(double valor){
-        if(this.saldoDisponivel >= valor){
-            saldoDisponivel -= valor;
-            this.fatura += valor;
+        if(getSaldoDisponivel() >= valor){
+            setSaldoDisponivel(getSaldoDisponivel() - valor);
+            setFatura(getFatura() + valor);
             String stringHistCompras = "Compra de "+valor+" reais.";
             historicoCompras.add(stringHistCompras);
             System.out.println("Compra efetuada com sucesso.");
@@ -59,11 +59,12 @@ public class CartaoCredito extends ContaCorrente{
     }
 
     public void Pagamento(double valor){
-        if(valor == this.fatura){
-                this.fatura = 0;
-                setSaldoDisponivel(getLimiteCredito());
-                System.out.println("Pagamento da fatura efetuado com sucesso");
-
+        if(valor >= getFatura()){
+            double troco = valor - getFatura();
+            depositar(troco);
+            setFatura(0);
+            setSaldoDisponivel(getLimiteCredito());
+            System.out.println("Pagamento da fatura efetuado com sucesso e foi depositado "+ troco+ "na sua conta, referente ao troco.");
             } else {
                 System.out.println("Valor insuficiente para pagar a fatura");
 

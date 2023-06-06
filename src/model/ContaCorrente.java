@@ -25,7 +25,7 @@ public class ContaCorrente extends Conta{
     }
 
     public void sacar(double valor){
-        if(this.saldo>=valor){
+        if(getSaldo()>=valor){
             setSaldo(getSaldo() - valor);
             String stringExtrato = "Saque de "+ valor + " reais.";
             extrato.add(stringExtrato);
@@ -35,7 +35,7 @@ public class ContaCorrente extends Conta{
     }
 
     public void transfetir(ContaCorrente contaTransfere, double valor, ContaCorrente contaRecebe){
-        if(this.saldo>=valor){
+        if(getSaldo()>=valor){
             contaTransfere.setSaldo(contaTransfere.getSaldo() - valor);
             contaRecebe.setSaldo(contaRecebe.getSaldo() + valor);
             String stringHist =" Transferência de "+ valor + " reais para "+contaRecebe.getNome();

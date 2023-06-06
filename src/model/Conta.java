@@ -3,10 +3,10 @@ package model;
 import java.util.ArrayList;
 
 public class Conta {
-    String nome;
-    int numConta;
-    double saldo;
-    double fatura;
+    private String nome;
+    private int numConta;
+    private double saldo;
+    private double fatura;
 
     public Conta(int numConta) {
         this.numConta = numConta;

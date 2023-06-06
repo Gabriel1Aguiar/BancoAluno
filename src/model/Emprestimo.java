@@ -50,6 +50,7 @@ public class Emprestimo extends CartaoCredito{
             setTaxaJuros(1.3);
             int dividirPagamento = 4;
             double valorFinal = valor * getTaxaJuros();
+            setValorEmprestimo(valorFinal);
             String valorFinalstr = String.format("%.2f", (valorFinal));
             String valorDividido = String.format("%.2f", (valorFinal/dividirPagamento));
             System.out.println(String.format("Simulação de empréstimo: \n-> Empréstimo: "+valor+" reais.\n-> Valor à pagar: "+valorFinalstr+" reais.\nPode dividir até em "+dividirPagamento+"x de "+valorDividido+" reais."));
@@ -57,12 +58,14 @@ public class Emprestimo extends CartaoCredito{
             setTaxaJuros(1.2);
             int dividirPagamento = 3;
             double valorFinal = valor * getTaxaJuros();
+            setValorEmprestimo(valorFinal);
             String valorFinalstr = String.format("%.2f", (valorFinal));
             String valorDividido = String.format("%.2f", (valorFinal/dividirPagamento));
             System.out.println(String.format("Simulação de empréstimo: \n-> Empréstimo: "+valor+" reais.\n-> Valor à pagar: "+valorFinalstr+" reais.\nPode dividir até em "+dividirPagamento+"x de "+valorDividido+" reais."));
         }else {
             int dividirPagamento = 2;
             double valorFinal = valor * getTaxaJuros();
+            setValorEmprestimo(valorFinal);
             String valorFinalstr = String.format("%.2f", (valorFinal));
             String valorDividido = String.format("%.2f", (valorFinal/dividirPagamento));
             System.out.println(String.format("Simulação de empréstimo: \n-> Empréstimo: "+valor+" reais.\n-> Valor à pagar: "+valorFinalstr+" reais.\nPode dividir até em "+dividirPagamento+"x de "+valorDividido+" reais."));
@@ -71,8 +74,8 @@ public class Emprestimo extends CartaoCredito{
 
     public void solicitarEmprestimo(double valor){
         simularEmprestimo(valor);
-        setFatura(getFatura()+ valor);
-        System.out.println("Valor de "+valor+" reais adicionado à fatura.\nTotal da Fatura: "+getFatura()+" reais.");
+        setFatura(getFatura()+ getValorEmprestimo());
+        System.out.println("Valor de "+getValorEmprestimo()+" reais adicionado à fatura.\nTotal da Fatura: "+getFatura()+" reais.");
 
 
     }

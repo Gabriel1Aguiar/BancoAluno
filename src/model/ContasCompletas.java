@@ -1,6 +1,6 @@
 package model;
 
-public class ContasCompletas extends Emprestimo{
+public class ContasCompletas extends ContaInvestimento{
     public ContasCompletas(int numConta) {
         super(numConta);
     }
@@ -10,7 +10,7 @@ public class ContasCompletas extends Emprestimo{
         String stringSaldo = String.format("Saldo: R$ %.2f", getSaldo());
         String stringFatura = String.format("Fatura: R$ %.2f", getFatura());
 
-        return "Nome: "+getNome()+"\n" + stringSaldo+"\nLimite Crédito: R$ "+getLimiteCredito()+"\n"+stringFatura ;
+        return "Nome: "+getNome()+"\n" + stringSaldo+"\nLimite Crédito Disponível: R$ "+getSaldoDisponivel()+"\n"+stringFatura ;
 
     }
 }
